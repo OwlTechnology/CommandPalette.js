@@ -4,7 +4,7 @@
   "description": "A pure JavaScript client side implementation of Sublime's and Atom's command palette tool",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha -w"
+    "test": "./node_modules/.bin/mocha -w"
   },
   "repository": {
     "type": "git",
