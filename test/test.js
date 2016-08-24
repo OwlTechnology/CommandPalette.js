@@ -5,11 +5,11 @@ var assert = require("assert");
 eval(fs.readFileSync("./dist/debug/CommandPalette.js") + '');
 
 describe("CommandPalette", function(){
-    describe("test", function(){
-        it("should have the 'test' property set to a test string", function(){
-            var palette = new CommandPalette();
 
-            assert.equal("test testing", palette.test);
-        });
+    it("should have the on() method", function(){
+        var palette = new CommandPalette();
+
+        assert.equal("function", typeof palette.on);
     });
+    
 });
