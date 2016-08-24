@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/OwlTechnology/CommandPalette.js.svg?branch=master)](#)
+
 #CommandPalette.js
 
 A pure JavaScript client side implementation of Sublime's and Atom's command palette tool.
