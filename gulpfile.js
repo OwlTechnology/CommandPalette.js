@@ -3,6 +3,8 @@ var gulpif = require("gulp-if");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var clean = require("gulp-clean");
+var sourcemaps = require("gulp-sourcemaps");
+var sass = require("gulp-sass");
 
 gulp.task("default", function(){
 
@@ -13,7 +15,27 @@ gulp.task("clean", function(){
                .pipe(clean());
 });
 
-gulp.task("build", function(debug, prod){
+gulp.task("build", ["build-css", "build-javascript"], function(debug, prod){
+    return true;
+});
+
+gulp.task("build-css", function(debug, prod){
+    var buildSetting = debug ? 0 : prod ? 1 : 0;
+
+    if(buildSetting == 0){
+        return gulp.src("sass/*.scss")
+                   .pipe(sourcemaps.init())
+                   .pipe(sass().on('error', sass.logError))
+                   .pipe(sourcemaps.write())
+                   .pipe(gulp.dest("dist/debug/css/"));
+    }else{
+        return gulp.src("sass/*.scss")
+                   .pipe(sass({outputStyle: "compressed"}))
+                   .pipe(gulp.dest("dist/prod/css/"));
+    }
+});
+
+gulp.task("build-javascript", function(debug, prod){
     var buildSetting = debug ? 0 : prod ? 1 : 0;
 
     return gulp.src("src/*.js")
@@ -24,5 +46,6 @@ gulp.task("build", function(debug, prod){
 });
 
 gulp.task("watch", function(debug, prod){
-    gulp.watch("src/*.js", ["build"]);
+    gulp.watch("src/*.js", ["build-javascript"]);
+    gulp.watcH("sass/*.scss", ["build-css"]);
 });
