@@ -11,5 +11,45 @@ describe("CommandPalette", function(){
 
         assert.equal("function", typeof palette.on);
     });
-    
+
+    it("should have the onAll() method", function(){
+        var palette = new CommandPalette();
+
+        assert.equal("function", typeof palette.onAll);
+    });
+
+    it("should have the config() method", function(){
+        var palette = new CommandPalette();
+
+        assert.equal("function", typeof palette.config);
+    });
+
+    it("should have the 'properties' property", function(){
+        var palette = new CommandPalette();
+
+        assert.equal("object", typeof palette.properties);
+    });
+
+    describe(".properties", function(){
+
+        it("should have the 'id' attribute", function(){
+            var palette = new CommandPalette();
+
+            assert.equal(true, palette.properties && palette.properties.id);
+        });
+
+        it("should have the 'hotkey' attribute", function(){
+            var palette = new CommandPalette();
+
+            assert.equal(true, palette.properties && palette.properties.hotkey);
+        });
+
+        it("should have the 'hidden' attribute", function(){
+            var palette = new CommandPalette();
+
+            assert.equal(true, palette.properties && palette.properties.hidden);
+        });
+
+    });
+
 });
