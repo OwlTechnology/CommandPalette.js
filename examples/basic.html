@@ -3,16 +3,22 @@
 <html lang="en">
     <head>
         <title>CommandPalette.js Basic Example</title>
+
+        <link rel="stylesheet" type="text/css" href="../dist/debug/css/examples.css" />
+        <link rel="stylesheet" type="text/css" href="../dist/debug/css/command-palette.css" />
     </head>
     <body>
-        <h1>Command Palette : Basic Example</h1>
+        <div class="content">
+            <h1>Command Palette : Basic Example</h1>
 
-        <div id="CommandPalette"></div>
+            <div id="CommandPalette"></div>
+        </div>
 
         <script src="../dist/debug/CommandPalette.js"></script>
         <script type="text/javascript">
             var c = new CommandPalette({
-                hidden: false
+                hidden: false,
+                floating: false
             });
         </script>
     </body>
