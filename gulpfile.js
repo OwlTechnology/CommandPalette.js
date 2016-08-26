@@ -47,5 +47,5 @@ gulp.task("build-javascript", function(debug, prod){
 
 gulp.task("watch", function(debug, prod){
     gulp.watch("src/*.js", ["build-javascript"]);
-    gulp.watcH("sass/*.scss", ["build-css"]);
+    gulp.watch("sass/*.scss", ["build-css"]);
 });

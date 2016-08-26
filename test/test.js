@@ -3,6 +3,7 @@ var assert = require("assert");
 
 // Load test code
 eval(fs.readFileSync("./dist/debug/CommandPalette.js") + '');
+var CommandPalette = this.CommandPalette;
 
 describe("CommandPalette", function(){
 
