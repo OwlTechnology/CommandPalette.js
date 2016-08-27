@@ -13,11 +13,11 @@ var CommandPaletteResultsController = function(parent){
 };
 
 CommandPaletteResultsController.prototype.clearResults = function(interpolate){
-    var previousHeight = this.resultsContainer.offsetHeight;
+    var targetHeight, previousHeight = this.resultsContainer.offsetHeight;
 
     this.resultsContainer.innerHTML = "";
 
-    var targetHeight = this.resultsContainer.offsetHeight;
+    targetHeight = this.resultsContainer.offsetHeight;
 
     if(typeof interpolate === 'undefined' || interpolate){
         this.interpolate(previousHeight, targetHeight);
@@ -49,8 +49,8 @@ CommandPaletteResultsController.prototype.animationEnd = function(e){
 };
 
 CommandPaletteResultsController.prototype.setResults = function(results){
-    var self = this;
-    var previousHeight = this.resultsContainer.offsetHeight;
+    var targetHeight,
+        self = this, previousHeight = this.resultsContainer.offsetHeight;
     this.results = results;
 
     this.clearResults(false);
@@ -64,7 +64,7 @@ CommandPaletteResultsController.prototype.setResults = function(results){
         this.resultsContainer.appendChild(element);
     }
 
-    var targetHeight = this.resultsContainer.offsetHeight;
+    targetHeight = this.resultsContainer.offsetHeight;
 
     this.interpolate(previousHeight, targetHeight);
 };

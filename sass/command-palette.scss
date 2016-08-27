@@ -5,7 +5,13 @@
     position: relative;
     border-radius: $borderRadius;
     z-index: 1000;
+    background: #eee;
+    transition: box-shadow 300ms ease-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+
+    &.active{
+        box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.3);
+    }
 
     // Config Settings
     &.grounded{
@@ -22,6 +28,7 @@
         display: block;
         box-sizing: border-box;
         outline: none;
+        background: #fff;
         font-size: 32px;
         padding: 10px;
         border-radius: $borderRadius;
