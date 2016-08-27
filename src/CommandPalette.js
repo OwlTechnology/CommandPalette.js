@@ -24,12 +24,30 @@ CommandPalette.prototype.on = function(name, action){
 CommandPalette.prototype.init = function(){
     this.findElement();
     this.buildDOM();
+    this.bindEvents();
 
     this.ready = true;
 };
 
+CommandPalette.prototype.onFocus = function(e){
+    this.search(10);
+};
+
+CommandPalette.prototype.onBlur = function(e){
+    this.results.clearResults();
+};
+
 CommandPalette.prototype.search = function(depth, value){
-    
+    var results = this.commands.search(depth, value);
+
+    this.results.setResults(results);
+};
+
+CommandPalette.prototype.bindEvents = function(){
+    var self = this;
+
+    this.elements.input.onfocus = function(e){ self.onFocus(e); };
+    this.elements.input.onblur = function(e){ self.onBlur(e); };
 };
 
 CommandPalette.prototype.findElement = function(){
