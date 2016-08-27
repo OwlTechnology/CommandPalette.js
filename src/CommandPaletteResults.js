@@ -1,12 +1,8 @@
-(function(context){
-    var CommandPaletteResultsControllerProto = function(parent){
-        this.commandPalette = parent;
+var CommandPaletteResultsController = function(parent){
+    this.commandPalette = parent;
 
-        this.resultsContainer = document.createElement("ul");
-        this.resultsContainer.className = "results";
+    this.resultsContainer = document.createElement("ul");
+    this.resultsContainer.className = "results";
 
-        this.commandPalette.element.appendChild(this.resultsContainer);
-    };
-
-    this.CommandPaletteResultsController = CommandPaletteResultsControllerProto;
-})(this);
+    this.commandPalette.element.appendChild(this.resultsContainer);
+};

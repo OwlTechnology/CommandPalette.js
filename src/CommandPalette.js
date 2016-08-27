@@ -1,61 +1,69 @@
-(function(context){
-    var CommandPaletteProto = function(config){
-        config = config || {};
+var CommandPalette = function(config){
+    config = config || {};
 
-        this.properties = {
-            id: config.id || "CommandPalette",
-            hotkey: config.hotkey || "[cmd-shift-p]",
-            hidden: typeof config.hidden === "undefined" ? true : config.hidden,
-            floating: typeof config.floating === "undefined" ? true : config.floating
-        };
-        this.elements = {};
-        this.ready = false;
-
-        this.init();
+    this.properties = {
+        id: config.id || "CommandPalette",
+        hotkey: config.hotkey || "[cmd-shift-p]",
+        hidden: typeof config.hidden === "undefined" ? true : config.hidden,
+        floating: typeof config.floating === "undefined" ? true : config.floating,
+        commandsToShow: 10
     };
+    this.elements = {};
+    this.commands = new CommandTree();
+    this.ready = false;
 
-    CommandPaletteProto.prototype.init = function(){
-        this.findElement();
-        this.buildDOM();
+    this.init();
+};
 
-        this.ready = true;
-    };
+CommandPalette.prototype.on = function(name, action){
+    var newCommand = new Command(name, action);
 
-    CommandPaletteProto.prototype.findElement = function(){
-        var _element = document.getElementById(this.properties.id);
+    this.commands.addCommand(newCommand);
+};
 
-        if(_element){
-            this.element = _element;
+CommandPalette.prototype.init = function(){
+    this.findElement();
+    this.buildDOM();
 
-            return true;
-        }else{
-            console.warn("Could not find element with the ID '" + this.properties.id + "'");
+    this.ready = true;
+};
 
-            return false;
-        }
-    };
+CommandPalette.prototype.search = function(depth, value){
+    
+};
 
-    CommandPaletteProto.prototype.buildDOM = function(){
-        this.elements.input = this.constructChild("input");
-        this.elements.input.type = "text";
+CommandPalette.prototype.findElement = function(){
+    var _element = document.getElementById(this.properties.id);
 
-        this.results = new CommandPaletteResultsController(this);
+    if(_element){
+        this.element = _element;
 
-        this.setClasses();
-    };
+        return true;
+    }else{
+        console.warn("Could not find element with the ID '" + this.properties.id + "'");
 
-    CommandPaletteProto.prototype.setClasses = function(){
-        this.element.className = "command-palette " + (this.properties.floating ? "floating" : "grounded");
-        this.elements.input.className = "command-line";
-    };
+        return false;
+    }
+};
 
-    CommandPaletteProto.prototype.constructChild = function(type){
-        var child = document.createElement(type);
+CommandPalette.prototype.buildDOM = function(){
+    this.elements.input = this.constructChild("input");
+    this.elements.input.type = "text";
 
-        this.element.appendChild(child);
+    this.results = new CommandPaletteResultsController(this);
 
-        return child;
-    };
+    this.setClasses();
+};
 
-    context.CommandPalette = CommandPaletteProto;
-})(this);
+CommandPalette.prototype.setClasses = function(){
+    this.element.className = "command-palette " + (this.properties.floating ? "floating" : "grounded");
+    this.elements.input.className = "command-line";
+};
+
+CommandPalette.prototype.constructChild = function(type){
+    var child = document.createElement(type);
+
+    this.element.appendChild(child);
+
+    return child;
+};
