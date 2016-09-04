@@ -27,7 +27,10 @@
                 console.log("Test");
             });
         </script>
-        <script>mocha.setup('bdd');</script>
+        <script>
+            window.initMochaPhantomJS && window.initMochaPhantomJS();
+            mocha.setup('bdd');
+        </script>
         <script src="../test.js"></script>
         <script>
             mocha.checkLeaks();

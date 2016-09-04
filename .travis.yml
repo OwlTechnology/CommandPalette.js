@@ -13,4 +13,4 @@ before_script:
   - sleep 3
   - nohup http-server ./ &
   - sleep 3
-script: mocha-phantomjs -t 10000 http://localhost:8080/test/harnesses/test.html
+script: mocha-phantomjs -t 15000 http://localhost:8080/test/harnesses/test.html
