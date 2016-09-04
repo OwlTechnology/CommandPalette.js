@@ -6,10 +6,11 @@ before_script:
   - npm install -g gulp
   - npm install -g mocha
   - npm install -g mocha-phantomjs
+  - npm install -g http-server
   - gulp build --debug
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3
-  - sudo rackup
+  - http-server ./
   - sleep 3
-script: mocha-phantomjs -t 10000 http://localhost/test/harnesses/test.html
+script: mocha-phantomjs -t 10000 http://localhost:8080/test/harnesses/test.html
