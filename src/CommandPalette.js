@@ -29,11 +29,38 @@ CommandPalette.prototype.init = function(){
     this.ready = true;
 };
 
+CommandPalette.prototype.addClass = function(className){
+    var splitClasses = this.element.className.split(" ");
+
+    if(splitClasses.indexOf(className) < 0){
+        this.element.className += " " + className;
+    }
+};
+
+CommandPalette.prototype.removeClass = function(className){
+    var foundIndex, output = "", splitClasses = this.element.className.split(" ");
+    foundIndex = splitClasses.indexOf(className);
+
+    if(foundIndex >= 0){
+        for(var i = 0; i < splitClasses.length; i++){
+            if(i != foundIndex){
+                output += splitClasses[i] + " ";
+            }
+        }
+
+        this.element.className = output;
+    }
+};
+
 CommandPalette.prototype.onFocus = function(e){
+    this.addClass("active");
+
     this.search(10);
 };
 
 CommandPalette.prototype.onBlur = function(e){
+    this.removeClass("active");
+
     this.results.clearResults();
 };
 
