@@ -1,0 +1,17 @@
+{
+  "name": "command-palette",
+  "description": "A pure JavaScript client side implementation of Sublime's and Atom's command palette tool",
+  "main": "dist/prod/CommandPalette.js",
+  "authors": [
+    "Owl Software"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "command",
+    "palette",
+    "atom",
+    "sublime"
+  ],
+  "homepage": "https://github.com/OwlTechnology/CommandPalette.js"
+}
