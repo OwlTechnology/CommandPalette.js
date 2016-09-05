@@ -64,6 +64,12 @@ CommandPalette.prototype.onBlur = function(e){
     this.results.clearResults();
 };
 
+CommandPalette.prototype.onKeyup = function(e){
+    var value = this.elements.input.value;
+
+    
+};
+
 CommandPalette.prototype.search = function(depth, value){
     var results = this.commands.search(depth, value);
 
@@ -75,6 +81,7 @@ CommandPalette.prototype.bindEvents = function(){
 
     this.elements.input.onfocus = function(e){ self.onFocus(e); };
     this.elements.input.onblur = function(e){ self.onBlur(e); };
+    this.elements.input.onkeyup = function(e){ self.onKeyup(e); };
 };
 
 CommandPalette.prototype.findElement = function(){
