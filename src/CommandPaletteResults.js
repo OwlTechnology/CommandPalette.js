@@ -66,5 +66,5 @@ CommandPaletteResultsController.prototype.setResults = function(results){
 
     targetHeight = this.resultsContainer.offsetHeight;
 
-    this.interpolate(previousHeight, targetHeight);
+    //this.interpolate(previousHeight, targetHeight);
 };

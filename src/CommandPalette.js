@@ -53,9 +53,10 @@ CommandPalette.prototype.removeClass = function(className){
 };
 
 CommandPalette.prototype.onFocus = function(e){
+    var value = this.elements.input.value;
     this.addClass("active");
 
-    this.search(10);
+    this.search(10, value === "" ? "a": value);
 };
 
 CommandPalette.prototype.onBlur = function(e){
@@ -67,7 +68,7 @@ CommandPalette.prototype.onBlur = function(e){
 CommandPalette.prototype.onKeyup = function(e){
     var value = this.elements.input.value;
 
-    
+    this.search(10, value);
 };
 
 CommandPalette.prototype.search = function(depth, value){

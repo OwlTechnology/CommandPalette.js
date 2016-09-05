@@ -27,9 +27,22 @@ CommandTree.prototype.addCommand = function(command){
 };
 
 CommandTree.prototype.search = function(depth, value){
-    if(!value){
-        
-    }else{
+    var target, targetIndex, results = [];
 
+    depth = depth || 10;
+    value = value || "a";
+
+    targetIndex = value.length - 1;
+
+    if(this.commands[targetIndex] && (this.commands[targetIndex])[value]){
+        target = (this.commands[targetIndex])[value];
+
+        target.forEach(function(e){
+            if(results.indexOf(e) == -1){
+                results.push(e);
+            }
+        });
     }
+
+    return results;
 };
