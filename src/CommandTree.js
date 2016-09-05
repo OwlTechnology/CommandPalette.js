@@ -27,21 +27,28 @@ CommandTree.prototype.addCommand = function(command){
 };
 
 CommandTree.prototype.search = function(depth, value){
-    var target, targetIndex, results = [];
+    var x, currValue, splitValue, target, targetIndex, results = [];
 
     depth = depth || 10;
     value = value || "a";
 
+    value = value.toLowerCase();
+
     targetIndex = value.length - 1;
+    splitValue = value.split(/[: ]/);
 
-    if(this.commands[targetIndex] && (this.commands[targetIndex])[value]){
-        target = (this.commands[targetIndex])[value];
+    for(x = 0; x < splitValue.length; x++){
+        currValue = splitValue[x];
 
-        target.forEach(function(e){
-            if(results.indexOf(e) == -1){
-                results.push(e);
-            }
-        });
+        if(this.commands[targetIndex] && (this.commands[targetIndex])[currValue]){
+            target = (this.commands[targetIndex])[currValue];
+
+            target.forEach(function(e){
+                if(results.indexOf(e) == -1){
+                    results.push(e);
+                }
+            });
+        }
     }
 
     return results;
