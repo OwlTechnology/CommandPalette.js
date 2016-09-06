@@ -2,7 +2,33 @@
 
 #CommandPalette.js
 
-A pure JavaScript client side implementation of Sublime's and Atom's command palette tool.
+A pure JavaScript client side implementation of Sublime's and Atom's command palette tool for general use, for web pages. Allows you to map functions and objects so that methods can be called from the palette.
+
+This project is licensed under the MIT open source license.
+
+##How to Download
+
+Either run
+
+```
+bower install command-palette
+```
+
+or, to install manually, clone the project, then from the project root, run
+
+```
+gulp build --prod
+```
+
+The finished, minified files will be available in the `dist/prod/` folder.
+
+##Documentation
+
+Basic documentation and use of the code is provided under [the GitHub wiki](https://github.com/OwlTechnology/CommandPalette.js/wiki).
+
+##Bug Reporting, Feature Requests
+
+Submit any bug reports, feature requests, or feedback on our [issue tracker](https://github.com/OwlTechnology/CommandPalette.js/issues). If you'd like to contribute, we accept pull requests. Follow the developer documentation below for more information.
 
 ##Developer Setup
 
