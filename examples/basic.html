@@ -21,8 +21,12 @@
                 floating: false
             });
 
-            c.on("Test", function(){
+            c.on("Foo:bar baz", function(){
                 console.log("Test");
+            });
+
+            c.on("bar:hotdog harambe", function(){
+                console.log("nice");
             });
         </script>
     </body>

@@ -53,15 +53,22 @@ CommandPalette.prototype.removeClass = function(className){
 };
 
 CommandPalette.prototype.onFocus = function(e){
+    var value = this.elements.input.value;
     this.addClass("active");
 
-    this.search(10);
+    this.search(10, value === "" ? "a": value);
 };
 
 CommandPalette.prototype.onBlur = function(e){
     this.removeClass("active");
 
     this.results.clearResults();
+};
+
+CommandPalette.prototype.onKeyup = function(e){
+    var value = this.elements.input.value;
+
+    this.search(10, value);
 };
 
 CommandPalette.prototype.search = function(depth, value){
@@ -75,6 +82,7 @@ CommandPalette.prototype.bindEvents = function(){
 
     this.elements.input.onfocus = function(e){ self.onFocus(e); };
     this.elements.input.onblur = function(e){ self.onBlur(e); };
+    this.elements.input.onkeyup = function(e){ self.onKeyup(e); };
 };
 
 CommandPalette.prototype.findElement = function(){
