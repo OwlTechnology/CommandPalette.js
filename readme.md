@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/OwlTechnology/CommandPalette.js.svg?branch=master)](https://travis-ci.org/OwlTechnology/CommandPalette.js)
+[![Build Status](https://travis-ci.org/OwlTechnology/CommandPalette.js.svg?branch=master)](https://travis-ci.org/OwlTechnology/CommandPalette.js) 
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/354/badge)](https://bestpractices.coreinfrastructure.org/projects/354)
 
 #CommandPalette.js
 
