@@ -18,16 +18,6 @@
         <div id="CommandPalette"></div>
 
         <script src="../../dist/debug/CommandPalette.js"></script>
-        <script type="text/javascript">
-            var palette = new CommandPalette({
-                hidden: false,
-                floating: false
-            });
-
-            palette.on("Test", function(){
-                console.log("Test");
-            });
-        </script>
         <script>
             window.initMochaPhantomJS && window.initMochaPhantomJS();
             mocha.setup('bdd');
