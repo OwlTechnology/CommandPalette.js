@@ -82,9 +82,10 @@ CommandPaletteResultsController.prototype.splitNameByQuery = function(name, quer
             });
 
             currString = "";
+            matching = 0;
         }
 
-        if(x == name.length - 1){
+        if(x == name.length - 1 && currString !== ''){
             output.push({
                 isMatch: matching == currString.length && matching != 0,
                 value: currString
