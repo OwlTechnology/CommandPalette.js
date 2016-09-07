@@ -24,12 +24,75 @@ CommandPaletteResultsController.prototype.clearResults = function(interpolate){
     }
 };
 
-CommandPaletteResultsController.prototype.buildResultDOM = function(command){
+CommandPaletteResultsController.prototype.buildResultDOM = function(command, query){
     var newElement = document.createElement("li");
+    var splitName = this.splitNameByQuery(command.name, query);
+    var output = "";
 
-    newElement.innerHTML = command.name;
+    for(var x = 0; x < splitName.length; x++){
+        var currSection = splitName[x];
+        var className = "part";
+
+        if(currSection.isMatch){
+            className += " match";
+        }
+
+        output += "<span class='" + className + "'>" + currSection.value + "</span>";
+    }
+
+    newElement.innerHTML = output;
 
     return newElement;
+};
+
+CommandPaletteResultsController.prototype.splitNameByQuery = function(name, query){
+    var output = [], currString = "", currChar, matching = 0, x;
+
+    for(x = 0; x < name.length; x++){
+        currChar = name[x];
+
+        if(currChar === query[matching]){
+            if(matching == 0){
+                output.push({
+                    isMatch: false,
+                    value: currString
+                });
+
+                currString = "";
+            }
+
+            matching += 1;
+        }else if(matching > 0){
+            matching = 0;
+
+            output.push({
+                isMatch: false,
+                value: currString
+            });
+
+            currString = "";
+        }
+
+        currString += currChar;
+
+        if(matching >= query.length){
+            output.push({
+                isMatch: true,
+                value: currString
+            });
+
+            currString = "";
+        }
+
+        if(x == name.length - 1){
+            output.push({
+                isMatch: matching == currString.length && matching != 0,
+                value: currString
+            });
+        }
+    }
+
+    return output;
 };
 
 CommandPaletteResultsController.prototype.interpolate = function(start, end){
@@ -48,7 +111,7 @@ CommandPaletteResultsController.prototype.animationEnd = function(e){
     this.resultsContainer.style.transition = "";
 };
 
-CommandPaletteResultsController.prototype.setResults = function(results){
+CommandPaletteResultsController.prototype.setResults = function(results, query){
     var targetHeight,
         self = this, previousHeight = this.resultsContainer.offsetHeight;
     this.results = results;
@@ -57,7 +120,7 @@ CommandPaletteResultsController.prototype.setResults = function(results){
 
     for(var r = 0; r < this.results.length; r++){
         var curr = this.results[r];
-        var element = this.buildResultDOM(curr);
+        var element = this.buildResultDOM(curr, query);
 
         element.className = "result command";
 

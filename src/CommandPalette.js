@@ -74,7 +74,7 @@ CommandPalette.prototype.onKeyup = function(e){
 CommandPalette.prototype.search = function(depth, value){
     var results = this.commands.search(depth, value);
 
-    this.results.setResults(results);
+    this.results.setResults(results, value);
 };
 
 CommandPalette.prototype.bindEvents = function(){
