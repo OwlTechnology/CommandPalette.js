@@ -3,33 +3,33 @@ var assert = chai.assert;
 describe("CommandPalette", function(){
 
     it("should have the on() method", function(){
-        return expect("function", typeof palette.on);
+        assert.equal("function", typeof palette.on);
     });
 
     it("should have the onAll() method", function(){
-        expect("function", typeof palette.onAll);
+        assert.equal("function", typeof palette.onAll);
     });
 
     it("should have the config() method", function(){
-        expect("function", typeof palette.config);
+        assert.equal("function", typeof palette.config);
     });
 
     it("should have the 'properties' attribute", function(){
-        expect("object", typeof palette.properties);
+        assert.equal("object", typeof palette.properties);
     });
 
     describe(".properties", function(){
 
         it("should have the 'id' attribute", function(){
-            expect(true, palette.properties && palette.properties.id);
+            assert.equal(true, palette.properties && palette.properties.id);
         });
 
         it("should have the 'hotkey' attribute", function(){
-            expect(true, palette.properties && palette.properties.hotkey);
+            assert.equal(true, palette.properties && palette.properties.hotkey);
         });
 
         it("should have the 'hidden' attribute", function(){
-            expect(true, palette.properties && palette.properties.hidden);
+            assert.equal(true, palette.properties && palette.properties.hidden);
         });
 
     });
