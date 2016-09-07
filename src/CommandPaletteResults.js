@@ -52,7 +52,7 @@ CommandPaletteResultsController.prototype.splitNameByQuery = function(name, quer
         currChar = name[x];
 
         if(currChar === query[matching]){
-            if(matching == 0){
+            if(matching == 0 && currString !== ''){
                 output.push({
                     isMatch: false,
                     value: currString
