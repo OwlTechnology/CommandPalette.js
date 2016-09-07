@@ -46,42 +46,41 @@ CommandPaletteResultsController.prototype.buildResultDOM = function(command, que
 };
 
 CommandPaletteResultsController.prototype.splitNameByQuery = function(name, query){
-    var output = [], currString = "", currChar, matching = 0, x;
+    var output = [], possibleMatch = "", currString = "", currChar, matching = 0, x;
 
     for(x = 0; x < name.length; x++){
         currChar = name[x];
 
         if(currChar === query[matching]){
-            if(matching == 0 && currString !== ''){
+            matching += 1;
+
+            possibleMatch += currChar;
+        }else if(matching > 0){
+            matching = 0;
+
+            currString += possibleMatch;
+            possibleMatch = "";
+        }
+
+        if(matching < 1)
+            currString += currChar;
+
+        if(matching >= query.length){
+
+            if(currString != ""){
                 output.push({
                     isMatch: false,
                     value: currString
                 });
-
-                currString = "";
             }
 
-            matching += 1;
-        }else if(matching > 0){
-            matching = 0;
-
-            output.push({
-                isMatch: false,
-                value: currString
-            });
-
-            currString = "";
-        }
-
-        currString += currChar;
-
-        if(matching >= query.length){
             output.push({
                 isMatch: true,
-                value: currString
+                value: possibleMatch
             });
 
             currString = "";
+            possibleMatch = "";
             matching = 0;
         }
 
