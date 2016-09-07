@@ -21,15 +21,15 @@ describe("CommandPalette", function(){
     describe(".properties", function(){
 
         it("should have the 'id' attribute", function(){
-            assert.equal(true, palette.properties && palette.properties.id);
+            assert.equal(true, !!(palette.properties && palette.properties.id));
         });
 
         it("should have the 'hotkey' attribute", function(){
-            assert.equal(true, palette.properties && palette.properties.hotkey);
+            assert.equal(true, !!(palette.properties && palette.properties.hotkey));
         });
 
         it("should have the 'hidden' attribute", function(){
-            assert.equal(true, palette.properties && palette.properties.hidden);
+            assert.equal(true, !!(palette.properties && typeof palette.properties.hidden !== 'undefined'));
         });
 
     });
