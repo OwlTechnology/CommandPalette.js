@@ -47,6 +47,36 @@ describe("CommandPalette", function(){
 
     describe(".results", function(){
 
+        describe(".buildResultDOM()", function(){
+
+            it("should build one span that contains the whole command name for no query matches, if the command is a single word", function(){
+                var firstChild, command = new Command("baz", null);
+                var newElement = palette.results.buildResultDOM(command, "bar");
+
+                assert.equal(1, newElement.childElementCount, "Expected there to be 1 child element");
+
+                firstChild = newElement.childNodes[0];
+
+                assert.equal("SPAN", firstChild.nodeName, "Expected the only child to be a span");
+                assert.equal("baz", firstChild.innerHTML, "Expected the only child to have the full command name");
+                assert.equal("part", firstChild.className, "Expected the only child to have the 'part' class, but not the 'match' class");
+            });
+
+            it("should build one span that contains the whole command name for a full query match, if the command is a single word", function(){
+                var firstChild, command = new Command("foo", null);
+                var newElement = palette.results.buildResultDOM(command, "foo");
+
+                assert.equal(1, newElement.childElementCount, "Expected there to be 1 child element");
+
+                firstChild = newElement.childNodes[0];
+
+                assert.equal("SPAN", firstChild.nodeName, "Expected the only child to be a span");
+                assert.equal("foo", firstChild.innerHTML, "Expected the only child to have the full command name");
+                assert.equal("part match", firstChild.className, "Expected the only child to have the 'part' and the 'match' classes");
+            });
+
+        });
+
         describe(".splitNameByQuery()", function(){
 
             it("should properly identify no matches", function(){
