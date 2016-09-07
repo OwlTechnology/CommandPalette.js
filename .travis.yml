@@ -4,7 +4,7 @@ node_js:
 before_script:
   - npm install -g gulp
   - npm install -g mocha
-  - sudo npm install -g mocha-phantomjs
+  - npm install -g mocha-phantomjs
   - npm install -g http-server
   - gulp build --debug
   - "export DISPLAY=:99.0"
