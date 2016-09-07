@@ -115,6 +115,47 @@ describe("CommandPalette", function(){
                 assert.equal(" ", results[3].value);
             });
 
+            it("should match against portions of words", function(){
+                var results = palette.results.splitNameByQuery("foo bar", "ba");
+
+                assert.equal(3, results.length, "Expected to have exactly 3 results");
+                assert.equal(false, results[0].isMatch, "Expected the first result to not be a match");
+                assert.equal(true, results[1].isMatch, "Expected the second result to be a match");
+                assert.equal(false, results[2].isMatch, "Expected the third result to not be a match");
+
+                assert.equal("foo ", results[0].value);
+                assert.equal("ba", results[1].value);
+                assert.equal("r", results[2].value);
+            });
+
+            it("should match against portions of multiple different words", function(){
+                var results = palette.results.splitNameByQuery("foo bar baz", "ba");
+
+                assert.equal(5, results.length, "Expected to have exactly 5 results");
+                assert.equal(false, results[0].isMatch, "Expected the first result to not be a match");
+                assert.equal(true, results[1].isMatch, "Expected the second result to be a match");
+                assert.equal(false, results[2].isMatch, "Expected the third result to not be a match");
+                assert.equal(true, results[3].isMatch, "Expected the fourth result to be a match");
+                assert.equal(false, results[4].isMatch, "Expected the fifth result to not be a match");
+
+                assert.equal("foo ", results[0].value);
+                assert.equal("ba", results[1].value);
+                assert.equal("r ", results[2].value);
+                assert.equal("ba", results[3].value);
+                assert.equal("z", results[4].value);
+            });
+
+            it("should match only once against a word, to match how search() works", function(){
+                var results = palette.results.splitNameByQuery("barbaz", "ba");
+
+                assert.equal(2, results.length, "Expected to have exactly 2 results");
+                assert.equal(true, results[0].isMatch, "Expected the first result to be a match");
+                assert.equal(false, results[1].isMatch, "Expected the second result to not be a match");
+
+                assert.equal("ba", results[0].value);
+                assert.equal("rbaz", results[1].value);
+            });
+
         });
 
     });
