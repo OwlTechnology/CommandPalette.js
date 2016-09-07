@@ -2,9 +2,10 @@ language: node_js
 node_js:
   - "6"
 before_script:
+  - sudo npm install
   - npm install -g gulp
   - npm install -g mocha
-  - npm install -g mocha-phantomjs
+  - sudo npm install -g mocha-phantomjs
   - npm install -g http-server
   - gulp build --debug
   - "export DISPLAY=:99.0"
