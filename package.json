@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/OwlTechnology/CommandPalette.js#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
