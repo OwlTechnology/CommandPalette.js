@@ -39,7 +39,8 @@ page.onConsoleMessage = function(msg){
                 console.log(unicode.CHECK.green + " " + result.name);
                 successes += 1;
             }else{
-                console.log(unicode.ERROR.red + " " + result.name);
+                console.log("\n" + unicode.ERROR.red + " " + result.name + "\n");
+                console.log("\t" + result.message + "\n\n");
             }
 
             total += 1;
