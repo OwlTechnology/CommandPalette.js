@@ -4,7 +4,7 @@
   "description": "A pure JavaScript client side implementation of Sublime's and Atom's command palette tool",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha -w"
+    "test": "phantomjs test/phantomTest.js http://localhost/test/harnesses/test.html"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,10 @@
   },
   "homepage": "https://github.com/OwlTechnology/CommandPalette.js#readme",
   "devDependencies": {
+    "blanket": "^1.2.3",
     "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "coveralls": "^2.11.12",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
@@ -35,6 +38,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "mocha": "^3.0.2",
-    "mocha-phantomjs": "^4.1.0"
+    "phantomjs": "^2.1.7"
   }
 }

@@ -4,7 +4,7 @@ node_js:
 before_script:
   - npm install -g gulp
   - npm install -g mocha
-  - npm install -g mocha-phantomjs
+  - npm install -g phantomjs
   - npm install -g http-server
   - npm rebuild
   - gulp build --debug
@@ -13,4 +13,4 @@ before_script:
   - sleep 3
   - nohup http-server ./ &
   - sleep 3
-script: mocha-phantomjs -t 15000 http://localhost:8080/test/harnesses/test.html
+script: phantomjs test/phantomTest.js http://localhost:8080/test/harnesses/test.html

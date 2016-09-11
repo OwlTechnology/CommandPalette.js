@@ -1,4 +1,5 @@
-// Setup
+var assert = chai.assert;
+
 var palette = new CommandPalette({
     hidden: false,
     floating: false
@@ -8,8 +9,7 @@ palette.on("Test", function(){
     console.log("Test");
 });
 
-// Tests
-var assert = chai.assert;
+// Test
 
 describe("CommandPalette", function(){
 
